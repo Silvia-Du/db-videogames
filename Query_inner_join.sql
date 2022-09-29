@@ -1,11 +1,10 @@
 ﻿--(11) Selezionare i dati del videogame (id, name, release_date, totale recensioni) con più recensioni (videogame id : 398)
-SELECT COUNT(reviews.id) as reviews_count
-FROM videogames
-INNER JOIN reviews
+SELECT DISTINCT TOP 1 COUNT(videogame_id) as rev_count, videogame_id
+FROM reviews 
+INNER JOIN videogames
 ON videogames.id = reviews.videogame_id
 GROUP BY videogame_id
-ORDER BY reviews_count;
---work in progress!
+ORDER BY rev_count DESC;
 
 
 
